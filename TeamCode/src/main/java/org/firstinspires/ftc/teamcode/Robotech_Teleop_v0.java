@@ -60,6 +60,16 @@ public class Robotech_Teleop_v0 extends LinearOpMode {
             boolean launcherToggle = gamepad2.right_bumper;
             m_robotech.rtLaunch.launch(launcherToggle);
 
+            //evaluate if stop button was pushed
+            boolean stopAllButton = gamepad2.x;
+            if (stopAllButton)
+            {
+                //stop everything
+                m_robotech.rtIntake.stop();
+                m_robotech.rtIntake.runMidtake(false);
+                m_robotech.rtLaunch.stop();
+            }
+
             //april tag detection
             /*if (m_robotech.rtCamera.detectedAprilTag())
             {
